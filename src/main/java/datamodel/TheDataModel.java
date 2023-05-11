@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class TheDataModel {
 
-    public static final Double DATA_MODEL_VERSION = 1.0;
+    public static final Double DATA_MODEL_VERSION = 1.1;
 
     public ModelOutput predict(ModelInput input) {
         if(input.getSearchDate().equals("05/08/2023")) {
