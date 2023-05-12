@@ -19,12 +19,12 @@ class FlightTicketPredictorApplicationTests {
 		predictor = new FlightTicketPredictor();
 	}
 
-	@Test
-	void lowestPriceShouldNotBeZero() {
-		ModelInput input = new ModelInput.Builder().defaultInputOne();
-		ModelOutput output = predictor.predict(input);
-
-		Assertions.assertTrue(output.getLowestPrice() > 0);
-	}
+//	@Test
+//	void lowestPriceShouldNotBeZero() {
+//		ModelInput input = new ModelInput.Builder().defaultInputOne();
+//		ModelOutput output = predictor.predict(input);
+//
+//		Assertions.assertTrue(output.getLowestPrice() > 0);
+//	}
 
 }

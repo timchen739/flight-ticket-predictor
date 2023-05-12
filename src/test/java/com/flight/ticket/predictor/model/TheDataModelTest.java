@@ -27,7 +27,7 @@ public class TheDataModelTest {
 
     @Test
     public void lowestPriceShouldNotBeZero() throws IOException {
-//        dataModel.run();
+        dataModel.run();
         validateOutput();
     }
 
