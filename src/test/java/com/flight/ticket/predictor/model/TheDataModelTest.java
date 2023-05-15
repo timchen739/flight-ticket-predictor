@@ -28,11 +28,24 @@ public class TheDataModelTest {
     @Test
     public void lowestPriceShouldNotBeZero() throws IOException {
         dataModel.run();
-        validateOutput();
+        validateOutput("output.csv");
     }
 
-    private void validateOutput()  {
-        String filePath = "src/main/resources/output.csv";
+    @Test
+    public void theseSpecificRoutesShouldNotHaveZeroDollarLowestPrice() throws IOException {
+        String[] routes = new String[]{
+               "BOS-DBX",
+                "BOS-LAX",
+                "NYC-HKG",
+                "ATL-NYC",
+                "NYC-LAX"
+        };
+        dataModel.run(routes);
+        validateOutput("output2.csv");
+    }
+
+    private void validateOutput(String fileName)  {
+        String filePath = String.format("src/main/resources/%s", fileName);
         String columnName = "Lowest Price";
 
         try(Reader in = new FileReader(filePath)) {
