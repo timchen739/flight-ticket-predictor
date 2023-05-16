@@ -58,7 +58,7 @@ public class TheDataModel {
 
         for(String route : routes) {
             double currentPrice = randomNumber(NO_ZERO);
-            double lowestPrice = randomNumber(WITH_ZERO);
+            double lowestPrice = randomNumber(NO_ZERO);
             fakeOutputs.add(new String[] {
                route, departDate, returnDate, String.format("%.2f", currentPrice) , String.format("%.2f", lowestPrice)
             });
