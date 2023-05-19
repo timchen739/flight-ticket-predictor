@@ -27,11 +27,11 @@ public class AirportCodeSelectorTest {
         Assertions.assertTrue(airportCodeSelector.hasCode(code));
     }
 
-//    @Test
-//    public void from_code_and_to_code_should_be_different() {
-//        String fromCode = airportCodeSelector.selectAirportCodeExcept(Collections.emptyList());
-//        String toCode = airportCodeSelector.selectAirportCodeExcept(List.of(fromCode));
-//
-//        Assertions.assertFalse(fromCode.equals(toCode), "From Code and To Code are the same" );
-//    }
+    @Test
+    public void from_code_and_to_code_should_be_different() {
+        String fromCode = airportCodeSelector.selectAirportCodeExcept(Collections.emptyList());
+        String toCode = airportCodeSelector.selectAirportCodeExcept(List.of(fromCode));
+
+        Assertions.assertFalse(fromCode.equals(toCode), "From Code and To Code are the same" );
+    }
 }

@@ -1,5 +1,6 @@
 package service;
 
+import datamodel.DataModelContext;
 import datamodel.TheDataModel;
 import entity.ModelInput;
 import entity.ModelOutput;
@@ -9,7 +10,7 @@ public class FlightTicketPredictor implements Predictor {
     private TheDataModel dataModel;
 
     public FlightTicketPredictor() {
-        this.dataModel = new TheDataModel();
+        this.dataModel = new TheDataModel(new DataModelContext());
     }
 
     @Override
