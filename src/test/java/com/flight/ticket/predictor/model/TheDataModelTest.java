@@ -50,6 +50,7 @@ public class TheDataModelTest {
                 "NYC-LAX"
         };
         String outputName = "output2.csv";
+        context.setGoodData(false);
         dataModel.run(outputName, routes);
         validateOutput(outputName);
     }
