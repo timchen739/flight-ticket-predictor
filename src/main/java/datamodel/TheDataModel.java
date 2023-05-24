@@ -51,9 +51,9 @@ public class TheDataModel {
     }
 
 
-    public void run(String outputName, String ...routes) {
+    public void run(String outputName, Iterator<String> routeIterator) {
         FakeOutputGenerator outputGenerator;
-        outputGenerator = context.isGoodData() ? new PassingCaseOutputGenerator(outputName) : new FailingCaseOutputGenerator(outputName);
-        outputGenerator.generateOutput(routes);
+        outputGenerator = context.createOutputGenerator(outputName);
+        outputGenerator.generateOutput(routeIterator);
     }
 }
