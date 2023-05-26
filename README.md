@@ -15,6 +15,5 @@ The test scenarios are as follows:
 All major tests for the model are located in the `TheDataModelTest.java` file.
 
 
-
 ***Note:***
-- The Model is a mocked out, we simply fake the outputs from the model based on the scenario. The main purpose is to demonstrate the test strategy not to develop a data model.
+- The model has been simulated by providing fabricated outputs based on the given scenario. The primary objective is to showcase the testing strategy rather than creating a comprehensive data model.

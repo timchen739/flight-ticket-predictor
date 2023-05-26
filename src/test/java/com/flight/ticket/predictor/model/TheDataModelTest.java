@@ -26,9 +26,6 @@ public class TheDataModelTest {
 
     private DataModelContext context;
 
-    private final Boolean LOG_FAILED_ROUTES = Boolean.TRUE;
-    private final Boolean IGNORE_FAILED_ROUTES = Boolean.FALSE;
-
     @BeforeEach
     public void init() {
         context = new DataModelContext();
@@ -61,7 +58,7 @@ public class TheDataModelTest {
     public void theseRandomizedRoutesShouldNotHaveZeroDollarLowestPrice() {
         String[] routes = randomRoutesBuilder(5);
         String outputName = "output3.csv";
-        context.setGoodData(false);
+        context.setGoodData(true);
         dataModel.run(outputName, Arrays.stream(routes).iterator());
         validateOutput(outputName);
     }
@@ -74,6 +71,11 @@ public class TheDataModelTest {
         dataModel.run(outputName, Arrays.stream(routes).iterator());
         validateOutput(outputName);
     }
+
+    /*
+     * this is disabled on purpose, enable to run the failed routes logged from
+     * theseRandomizedRoutesShouldNotHaveZeroDollarLowestPrice test
+     * */
 
     @Test
     @Disabled
