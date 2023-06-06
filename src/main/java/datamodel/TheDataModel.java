@@ -3,10 +3,7 @@ package datamodel;
 import entity.ModelInput;
 import entity.ModelOutput;
 import interfaces.FakeOutputGenerator;
-import service.FailingCaseOutputGenerator;
-import service.PassingCaseOutputGenerator;
 import util.CsvFileHelper;
-import util.DateHelper;
 
 import java.io.IOException;
 import java.util.*;
@@ -14,9 +11,14 @@ import java.util.*;
 public class TheDataModel {
 
     private DataModelContext context;
-
+    private String version;
     public TheDataModel(DataModelContext context) {
         this.context = context;
+    }
+
+    public TheDataModel(String version, DataModelContext context) {
+        this.context = context;
+        this.version = version;
     }
 
     public ModelOutput predict(ModelInput input) {
@@ -33,6 +35,10 @@ public class TheDataModel {
                     .advice("Buy")
                     .build();
         }
+    }
+
+    public String getModelVersion() {
+        return version.trim().length() == 0 ? "Latest" : this.version;
     }
 
     public void run() throws IOException {

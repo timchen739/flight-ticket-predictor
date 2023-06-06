@@ -1,45 +1,44 @@
 package datamodel;
 
 import interfaces.FakeOutputGenerator;
-import service.FailingCaseOutputGenerator;
+import service.DrasticPriceChangeCaseOutputGenerator;
+import service.ZeroDollarCaseOutputGenerator;
 import service.PassingCaseOutputGenerator;
 import service.ResultNotFoundOutputGenerator;
+
+import static constants.TestScenario.*;
 
 /*
 * This class serves the purpose of configuring the model to generate needed fake outputs
 *
-* goodData: indicates if we want to generate a passing case outputs, true means passing output is needed
-*
-* noResultFoundForARoute: controls whether we want to include a mock result when the model
-* is not able to get calculated prices for a specific route, in another word no result found for a route
-* True means include no result in the generated output
+* testScenario: indicates what type of fake outputs we want the model to create. Refer to TestScenario class for available scenarios we are mocking
 *
 * */
 public class DataModelContext {
     private boolean goodData = true;
     private boolean noResultFoundForARoute = false;
 
-    public boolean isGoodData() {
-        return goodData;
-    }
+    private String testScenario;
 
-    public void setGoodData(boolean goodData) {
-        this.goodData = goodData;
-    }
-
-    public void setNoResultFoundForARoute(boolean noResultFoundForARoute) {
-        this.noResultFoundForARoute = noResultFoundForARoute;
+    public void setTestScenario(String testScenario) {
+        this.testScenario = testScenario;
     }
 
     public FakeOutputGenerator createOutputGenerator(String outputName) {
-        if(goodData && noResultFoundForARoute) {
+        if (testScenario.equals(RESULT_NOT_FOUND_SCENARIO)) {
             return new ResultNotFoundOutputGenerator(outputName);
         }
-
-        if(goodData) {
+        else if (testScenario.equals(PASSING_SCENARIO)) {
             return new PassingCaseOutputGenerator(outputName);
         }
-
-        return new FailingCaseOutputGenerator(outputName);
+        else if (testScenario.equals(ZERO_DOLLAR_SCENARIO)) {
+            return new ZeroDollarCaseOutputGenerator(outputName);
+        }
+        else if (testScenario.equals(DRASTIC_PRICE_CHANGE_SCENARIO)) {
+            return new DrasticPriceChangeCaseOutputGenerator(outputName);
+        }
+        else {
+            throw new Error("No Test Scenario Defined");
+        }
     }
 }

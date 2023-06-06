@@ -53,7 +53,7 @@ public abstract class FakeOutputGenerator {
         if (needZero && randInt == 0) {
             num = 0.00;
         } else {
-            num = random.nextDouble(1951.00) + 50;
+            num = random.nextDouble(1451.00) + 500;
         }
 
         return num;
